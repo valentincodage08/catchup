@@ -46,18 +46,43 @@
 
 						<!-- nav -->
 						<ul class="nav-menu nav navbar-nav">
-							<li><a href="category.php">News</a></li>
-							<li><a href="category.php">Popular</a></li>
-							<li class="cat-1"><a href="category.php">Web Design</a></li>
-							<li class="cat-2"><a href="category.php">JavaScript</a></li>
-							<li class="cat-3"><a href="category.php">Css</a></li>
-							<li class="cat-4"><a href="category.php">Jquery</a></li>
+							<li><a href="category.php">Accueil</a></li>
+							<li><a href="category.php">Actualités</a></li>
+							<li class="cat-1"><a href="category.php">Sport</a></li>
+							<li class="cat-2"><a href="category.php">Memes</a></li>
+							<!-- <li class="cat-3"><a href="category.php">Css</a></li>
+							<li class="cat-4"><a href="category.php">Jquery</a></li> -->
 						</ul>
 						<!-- /nav -->
 
 						<!-- search & aside toggle -->
 						<div class="nav-btns">
+
+						<?php if(isset($_SESSION['firstname'])) { 
+
+								if($_SESSION['usertype'] == 0) { ?>
+									<button class="aside-btn">Bonjour, <?=$_SESSION['firstname']?></button>
+									<button class="aside-btn"><a href="../controllers/deconnexion.php">Se déconnecter</a></button>
+								<?php }
+								
+								elseif($_SESSION['usertype'] == 1) { ?>
+									<button class="aside-btn">Bonjour, Modérateur <?=$_SESSION['firstname']?></button>
+									<button class="aside-btn"><a href="../controllers/deconnexion.php">Se déconnecter</a></button>
+								<?php }
+
+								elseif($_SESSION['usertype'] == 2) { ?>
+									<button class="aside-btn">Bonjour, Admin <?=$_SESSION['firstname']?></button>
+									<button class="aside-btn"><a href="tabadmin.php">Partie Admin</a></button>
+									<button class="aside-btn"><a href="../controllers/deconnexion.php">Se déconnecter</a></button>
+								<?php }
+							}
+
+							else { ?>
+
 							<button class="aside-btn"><a href="../login/index.php">Se connecter</a></button>
+
+							<?php } ?>
+
 							<button class="aside-btn"><i class="fa fa-bars"></i></button>
 							<button class="search-btn"><i class="fa fa-search"></i></button>
 							<div class="search-form">

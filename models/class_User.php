@@ -28,29 +28,30 @@ class User {
             if ($resultat['password']==$this->_password) {
 
                 if ($resultat['usertype'] == 0){
-
                     session_start();
                     $_SESSION['firstname'] = $resultat['firstname'];
                     $_SESSION['name'] = $resultat['name'];
                     $_SESSION['id_user'] = $resultat['id_user'];
                     $_SESSION['usertype'] = $resultat['usertype'];
-                    header('location: ../views/user.php');
+                    header('location: ../views/index.php');
                 }
+                // Modérateur
                 elseif ($resultat['usertype'] == 1) {
                     session_start();
                     $_SESSION['firstname'] = $resultat['firstname'];
                     $_SESSION['name'] = $resultat['name'];
                     $_SESSION['id_user'] = $resultat['id_user'];
                     $_SESSION['usertype'] = $resultat['usertype'];
-                    header('location: ../views/modo.php');
+                    header('location: ../views/index.php');
                 }
                 else {
+                    // Admin
                     session_start();
                     $_SESSION['firstname'] = $resultat['firstname'];
                     $_SESSION['name'] = $resultat['name'];
                     $_SESSION['id_user'] = $resultat['id_user'];
                     $_SESSION['usertype'] = $resultat['usertype'];
-                    header('location: ../views/admin.php');
+                    header('location: ../views/index.php');
                 }
                 
             }
