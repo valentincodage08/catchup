@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,11 +29,15 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+<?php 
+if(isset($_SESSION['firstname'])) {
+    echo "Salut, ".$_SESSION['firstname'];
+}
+?>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="../controllers/connexion.php" method="POST">
 					<span class="login100-form-title p-b-33">
 						Account Login
 					</span>
@@ -44,13 +49,13 @@
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" value="submit">
 							Sign in
 						</button>
 					</div>
@@ -78,8 +83,6 @@
 			</div>
 		</div>
 	</div>
-	
-
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
