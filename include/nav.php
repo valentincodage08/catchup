@@ -27,18 +27,18 @@
 						<?php if(isset($_SESSION['firstname'])) { 
 
 								if($_SESSION['usertype'] == 0) { ?>
-									<button>Bonjour, <?=$_SESSION['firstname']?></button>
+									<button><a href="../include/updateacc.php?id=<?=$_SESSION['id_user']?>">Bonjour, <?=$_SESSION['firstname']?></a></button>
 									<button><a href="../controllers/deconnexion.php">Se déconnecter</a></button>
 								<?php }
 								
 								elseif($_SESSION['usertype'] == 1) { ?>
-									<button>Bonjour, Modérateur <?=$_SESSION['firstname']?></button>
+									<button><a href="../include/updateacc.php?id=<?=$_SESSION['id_user']?>">Bonjour, Modérateur <?=$_SESSION['firstname']?></a></button>
 									<button><a href="../controllers/deconnexion.php">Se déconnecter</a></button>
 								<?php }
 
 								elseif($_SESSION['usertype'] == 2) { ?>
-									<button>Bonjour, Admin <?=$_SESSION['firstname']?></button>
-									<button><a href="tabadmin.php">Partie Admin</a></button>
+									<button><a href="../include/updateacc.php?id=<?=$_SESSION['id_user']?>">Bonjour, Admin <?=$_SESSION['firstname']?></a></button>
+									<button><a href="../views/tabadmin.php">Partie Admin</a></button>
 									<button><a href="../controllers/deconnexion.php">Se déconnecter</a></button>
 								<?php }
 							}
