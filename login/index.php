@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V19</title>
+	<title>Connexion</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -29,54 +29,62 @@
 <!--===============================================================================================-->
 </head>
 <body>
-<?php 
-if(isset($_SESSION['firstname'])) {
-    echo "Salut, ".$_SESSION['firstname'];
-}
-?>
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
 				<form class="login100-form validate-form" action="../controllers/connexion.php" method="POST">
 					<span class="login100-form-title p-b-33">
-						Account Login
+						Connexion
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<?php if($_GET['success'] == 1) { ?>
+
+					<span class="login100-form-title p-b-33">
+						Inscription réussie
+					</span>
+
+					<?php } ?>
+
+					<?php if($_GET['success'] == 2) { ?>
+
+					<span class="login100-form-title p-b-33">
+						Identifiants incorrects
+					</span>
+
+					<?php } ?>
+
+					<div class="wrap-input100 validate-input" data-validate = "Email valide requis: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+					<div class="wrap-input100 rs1 validate-input" data-validate="Mot de passe requis">
+						<input class="input100" type="password" name="password" placeholder="Mot de passe">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="container-login100-form-btn m-t-20">
 						<button class="login100-form-btn" value="submit">
-							Sign in
+							Se connecter
 						</button>
 					</div>
 
 					<div class="text-center p-t-45 p-b-4">
 						<span class="txt1">
-							Forgot
+							Pas encore de compte ?
 						</span>
 
-						<a href="#" class="txt2 hov1">
-							Username / Password?
+						<a href="inscription.php" class="txt2 hov1">
+							S'inscrire
 						</a>
 					</div>
 
 					<div class="text-center">
-						<span class="txt1">
-							Create an account?
-						</span>
-
 						<a href="#" class="txt2 hov1">
-							Sign up
+							Mot de passe oublié ?
 						</a>
 					</div>
 				</form>
@@ -99,7 +107,5 @@ if(isset($_SESSION['firstname'])) {
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
 </body>
 </html>

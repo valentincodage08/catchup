@@ -9,7 +9,7 @@ class User {
     private $_email;
     private $_password;
 
-    public function __construct($_email, $_password) {;
+    public function __construct($_email, $_password) {
         $this->_email = $_email;
         $this->_password = $_password;
     }
@@ -57,17 +57,32 @@ class User {
             }
             else {
                 // erreur : mdp identifiants incorrects
-                echo "mdp incorrect";
+                header('location: ../login/index.php?success=2');
             }
 
         }
         else {
             // erreur : identifiants incorrects ( ici pas de mail)
-            echo "pas de mail";
+            header('location: ../login/index.php?success=2');
         }
 
         $req->closeCursor();
 
+    }
+
+    public function addUser($db) {
+        $req = $db->prepare("INSERT INTO CUUser (firstname, name, email, password, token, verified, usertype)
+                              VALUES (:firstname, :name, :email, :password, :token, 0, 0)");
+        $req->execute(array(
+                ':firstname' => $_POST['firstname'],
+                ':name' => $_POST['name'],
+                ':email' => $this->_email,
+                ':password' => $this->_password,
+                ':token' => $token = substr(str_shuffle(str_repeat("0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN", 32)), 0, 32)
+        ));
+        $req->closeCursor();
+        // mail($this->_username, "Veuillez confirmer votre mail", "Veuillez confirmer votre mail en cliquant ici : http://demandat.simplon-charleville.fr/exo-POO-2/confirm.php?token=$token");
+        header('location: ../login/index.php?success=1');
     }
 }
 ?>
