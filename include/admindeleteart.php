@@ -6,13 +6,13 @@ $connexion = new Database('db5000303630.hosting-data.io', 'dbs296617', 'dbu52653
 $db = $connexion->PDOConnexion();
 
 
-$userid = $_GET['id'];
+$thisarticle = $_GET['id'];
 
-$req = $db->prepare(" DELETE FROM CUUser WHERE id_user = $userid");
+$req = $db->prepare(" DELETE FROM CUArticle WHERE id_article = $thisarticle");
           $req ->execute();
 
           $req->closecursor();
-          header('Location: ../views/tabadmin.php?success=2');
+          header('Location: ../views/tabadmin.php?success=4');
 } 
 else {
     header('location: ../views/index.php');
